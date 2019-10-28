@@ -25,8 +25,8 @@ var missTel = document.getElementById("missTel");
 var missArea = document.getElementById("missArea");
 
 // declaration des regex
-var textValid = new RegExp(/^.+[a-zA-Z-0-9]+$/); // pour les prenom et nom , peut contenir des chiffres et des lettres 
-var adresseValid = new RegExp(/^.+[a-zA-Z-0-9]+$/); //(/^((?:[013-9]\d)|(?:2[0-9ABab]))\d{3}$/);
+var textValid = new RegExp(/^[a-zA-Z\-\déèàçùëüïôäâêûîô#&]+$/); // pour les prenom et nom , peut contenir des chiffres et des lettres 
+var adresseValid = new RegExp(/^[a-zA-Z\-\déèàçùëüïôäâêûîô#&]+$/); //(/^((?:[013-9]\d)|(?:2[0-9ABab]))\d{3}$/);
 var ddnValid = new RegExp(/^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/);
 var cpValid = new RegExp(/^(?:(?:(?:(?:[013-8]\d)|(?:2[\dabAB])|(?:9[0-5]))\d{3})|(?:(?:97[1-5]\d{2})|(?:98[06-8]\d{2})))$/);// filtre du code postale il doit contenir 5 nombres sauf la corse qui contien des lettres
 var mailValid = new RegExp(/^[-+.\w]{1,64}@[-.\w]{1,64}\.[-.\w]{2,6}$/i);// filtre email il divise le mail en 4 blocs le 1er accepte lettre, chiffre et caractere le 2nd @ obligatoire 3em pour la sone de texte et le 4em demande un .et des caractéres
