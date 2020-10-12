@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Marianne Academy - Inscription</title>
+	<meta charset="utf-8">
+</head>
+
+<body>
+
+	<script language='javascript'>
+
+		//Dire que le champ ne doit pas être vide
+		var check_name = function(champ){
+			if (champ === null){
+				return false;
+			}
+			return true;
+		}
+
+		//vérifier le mail
+		var tab_end = ['.com', '.fr', '.org'];
+		var verify_mail = function(valeur){
+
+			var atPosition=x.indexOf("@");  
+			var pointPosition=x.lastIndexOf("."); 
+			
+			if ((pointPosition <= valeur.length-3) || (atPosition === valeur[0]) || (atPosition === valeur[valeur.length-1])) {
+				return false;
+		
+			}
+
+			return true;
+		}
+
+		//Vérifier le format de la date
+		var verify_date = function(date){
+			if((date.charAt(2) !== "/") || (date.charAt(5) !== "/") || (date.length !== 10)){
+				return false;
+				
+			}
+			return true;
+		}
+
+		//Vérifier le mot de passe
+		
+		var verify_mdp = function(val1, val2){
+			if((val1 !== val2) || (val1.length !== 8) || (val1 === null) 
+			||(val1.toLowerCase() === val1) || (!containsNumber(val1))){
+				return false;
+				
+			}	
+			return true;
+		}
+		
+
+		var containsNumber = function(valeur){
+			for (i = 0; i < valeur.length; i++) {
+				if(!isNaN(valeur.charAt(i))) {
+					return true;
+				}
+			}
+			return false;
+		}
+		
+		
+		var submit_verification = function(){
+			nom_famille = document.forms["general"].elements["Nom_famille"].value;
+			prenom_1= document.forms["general"].elements["Prenom1"].value;
+			prenom_2 = document.forms["general"].elements["Prenom2"].value;
+			date = document.forms["general"].elements["date"].value;
+			mdp = document.forms["general"].elements["mot_de_passe"].value;
+			mdp_confirm = document.forms["general"].elements["mot_de_passe_confirm"].value;
+			mail = document.forms["general"].elements["mail"].value;
+
+			return (check_name(nom_famille) &&
+			check_name(prenom_1) &&
+			check_name(prenom_2) &&
+			verify_date(date) &&
+			verify_mdp(mdp, mdp_confirm) &&
+			verify_mail(mail));
+
+		}
+
+		
+	</script>
+
+	<form action="post" name="general" onSubmit="submit_verification()">
+		<fieldset>
+			<legend>Formulaire d'inscription</legend>
+			<p>
+				<label for="Nom_famille">Nom de famille</label>
+				<input type="text" name="Nom_famille" id="Nom_famille"> <br/>
+			</p>
+
+			<p>
+				<label for="Prenom1">Prénom1</label>
+				<input type="text" name="Prenom1" id="Prenom1">	<br/>
+			</p>
+			
+			<p>
+				<label for="Prenom2">Prénom2</label>
+				<input type="text" name="Prenom2" id="Prenom2">	<br/>
+			</p>
+
+			<p>
+				<label for="date">Date de naissance</label>
+				<input type="text" name="date" id="date"> <br/>
+			</p>
+
+			<p>
+				<label for="sit_mat">Situation matrimoniale</label>
+				<input type="text" name="sit_mat" id="sit_mat"> <br/>
+			</p>
+			
+			<p>Adresse</p>
+
+			<p>
+				<label for="type_voie">Type de voie</label>
+				<select name="type_voie" id="type_voie">
+					<option value="rue">Rue</option>
+					<option value="boulevard">Boulevard</option>
+					<option value="avenue">Avenue</option>
+				</select>
+
+				<label for="num_voie">N°</label>
+				<input type="text" name="num_voie" id="num_voie">	
+
+				<label for="Nom_rue">Nom voie</label>
+				<input type="text" name="nom_voie" id="nom_voie"><br/>
+			</p>
+
+			<p>
+				<label for="code_postal">Code postal</label>
+				<input type="text" name="code_postal" id="code_postal">
+
+				<label for="nom_ville">Ville</label>
+				<input type="text" name="nom_ville" id="nom_ville">
+			</p>
+			
+			<p>
+				<label for="choix_formation">Choix de formation</label>
+				<select value="choix_formation">
+					<option value="data_science">Data Scientist</option>
+					<option value="dev_java">Développeur JAVA</option>
+					<option value="dev_php">Développeur PHP</option>
+				</select>
+
+			</p>
+			<p>
+				<label for="mail">Adresse mail</label>
+				<input type="text" name="mail" id="mail"><br/>
+	
+			</p>
+
+			<p>
+				<label for="mot_de_passe">Mot de passe</label>
+				<input type="password" name="mot_de_passe" id="mot_de_passe"><br/>
+			</p>
+			
+			<p>
+				<label for="mot_de_passe_confirm">Confirmation mot de passe</label>
+				<input type="password" name="mot_de_passe_confirm" id="mot_de_passe_confirm"><br/>
+			</p>
+
+			<div align="center">
+				<p>
+					<input type="submit" name="envoi" id="envoi">
+				</p>
+			</div>
+		</fieldset>
+	</form>
+</body>
+</html>
